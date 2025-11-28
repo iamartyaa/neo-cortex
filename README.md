@@ -22,8 +22,8 @@ NEO.CORTEX is an open-source tech blog built with Next.js 16, featuring a stunni
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/neo-cortex-blog.git
-cd neo-cortex-blog
+git clone https://github.com/iamartyaa/neo-cortex.git
+cd neo-cortex
 
 # Install dependencies
 npm install
@@ -111,8 +111,8 @@ We welcome contributions from the community! Here's how to contribute an article
 ### 1. Fork & Clone
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/neo-cortex-blog.git
-cd neo-cortex-blog
+git clone https://github.com/YOUR_USERNAME/neo-cortex.git
+cd neo-cortex
 git checkout -b post/your-article-title
 ```
 

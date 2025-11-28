@@ -660,12 +660,12 @@ Check out [this link](https://example.com) for more info.`}
                       Go to our GitHub repository and click the &quot;Fork&quot; button to create your own copy.
                     </p>
                     <a 
-                      href="https://github.com/yourusername/neo-cortex-blog" 
+                      href="https://github.com/iamartyaa/neo-cortex" 
                       target="_blank" 
                       rel="noopener noreferrer"
                       className="inline-flex items-center gap-2 text-primary hover:underline text-sm font-mono"
                     >
-                      github.com/yourusername/neo-cortex-blog
+                      github.com/iamartyaa/neo-cortex
                       <ExternalLink className="h-3 w-3" />
                     </a>
                   </div>
@@ -685,8 +685,8 @@ Check out [this link](https://example.com) for more info.`}
                       Clone your fork and create a new branch for your article:
                     </p>
                     <pre className="bg-muted p-3 rounded-lg text-sm font-mono border-2 border-border overflow-x-auto">
-                      <code>{`git clone https://github.com/YOUR_USERNAME/neo-cortex-blog.git
-cd neo-cortex-blog
+                      <code>{`git clone https://github.com/YOUR_USERNAME/neo-cortex.git
+cd neo-cortex
 git checkout -b post/your-article-title`}</code>
                     </pre>
                   </div>
