@@ -21,7 +21,7 @@ Vercel is the **recommended deployment platform** for Next.js applications. It's
 
 #### Option 1: One-Click Deploy
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/yourusername/neo-cortex-blog)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/iamartyaa/neo-cortex)
 
 #### Option 2: CLI Deploy
 
@@ -157,7 +157,7 @@ npm run build
 const nextConfig = {
   output: 'export',
   images: { unoptimized: true },
-  basePath: '/neo-cortex-blog', // if not using custom domain
+  basePath: '/neo-cortex', // if not using custom domain
 };
 ```
 

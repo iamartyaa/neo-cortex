@@ -22,7 +22,7 @@ Giscus uses GitHub Discussions for comments, keeping everything in one place.
 
 ```tsx
 <Giscus
-  repo="yourusername/neo-cortex-blog"
+  repo="iamartyaa/neo-cortex"
   repoId="YOUR_REPO_ID"
   category="Comments"
   categoryId="YOUR_CATEGORY_ID"
