@@ -1,0 +1,51 @@
+---
+title: "Why I Switched from React to Next.js (And Never Looked Back)"
+date: "2024-11-20"
+excerpt: "After years of building SPAs with Create React App, I made the jump to Next.js. Here's what I learned and why you should consider it too."
+tags: ["nextjs", "react", "webdev"]
+---
+
+# Why I Switched from React to Next.js
+
+Let me start with a confession: I was a **Create React App purist**. I loved the simplicity, the familiar folder structure, and the "just works" developer experience.
+
+But then I discovered Next.js, and everything changed.
+
+## The Breaking Point
+
+My SPA was suffering from:
+
+- **Terrible SEO**: Search engines couldn't index my content properly.
+- **Slow Initial Load**: Users stared at a blank screen for 3+ seconds.
+- **Complex Routing**: React Router was getting unwieldy.
+
+## What Next.js Gave Me
+
+### 1. Server-Side Rendering (SSR)
+
+```jsx
+// This runs on the server!
+export async function getServerSideProps() {
+  const data = await fetchFromDatabase();
+  return { props: { data } };
+}
+```
+
+### 2. File-Based Routing
+
+No more `<Route path="/blog/:slug" component={BlogPost} />`. Just create a file at `pages/blog/[slug].js`. Done.
+
+### 3. API Routes
+
+Need a backend endpoint? Create a file in `pages/api/`. It's that simple.
+
+### 4. Image Optimization
+
+The `next/image` component automatically optimizes images, serves WebP, and lazy loads. My Lighthouse score jumped 30 points.
+
+## The Verdict
+
+Next.js isn't just React with extras—it's a complete framework for building modern web applications. The App Router in Next.js 13+ takes this even further with React Server Components.
+
+If you're still on CRA, give Next.js a weekend. You won't go back.
+

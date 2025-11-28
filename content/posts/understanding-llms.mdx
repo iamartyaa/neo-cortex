@@ -1,0 +1,59 @@
+---
+title: "Understanding Large Language Models: A Technical Deep Dive"
+date: "2024-11-15"
+excerpt: "What's really happening inside GPT-4, Claude, and other LLMs? Let's break down transformers, attention, and why these models are so powerful."
+tags: ["ai", "llm", "machine-learning"]
+---
+
+# Understanding Large Language Models
+
+Everyone's using ChatGPT, but few understand what's happening under the hood. Let's change that.
+
+## The Transformer Architecture
+
+At the heart of every modern LLM is the **Transformer**, introduced in the legendary 2017 paper "Attention Is All You Need."
+
+### Key Components
+
+1. **Embeddings**: Words become vectors in high-dimensional space.
+2. **Self-Attention**: The model learns which words relate to which.
+3. **Feed-Forward Networks**: Processing happens in parallel.
+4. **Layer Normalization**: Keeps training stable.
+
+```
+Input → Embedding → [Attention + FFN] × N → Output
+```
+
+## The Attention Mechanism
+
+This is where the magic happens. For each word, the model asks:
+
+> "Which other words in this sequence should I pay attention to?"
+
+```python
+# Simplified attention
+attention_scores = query @ key.T / sqrt(d_k)
+attention_weights = softmax(attention_scores)
+output = attention_weights @ value
+```
+
+## Why Scale Matters
+
+The "Large" in LLM isn't just marketing. Scaling laws show that:
+
+- **More parameters** = better performance
+- **More data** = better performance
+- **More compute** = better performance
+
+GPT-4 likely has over 1 trillion parameters. That's a lot of weights to tune.
+
+## The Emergent Properties
+
+Here's what's wild: nobody programmed these models to reason, to write poetry, or to debug code. These abilities **emerged** from scale.
+
+We're essentially growing intelligence, not engineering it.
+
+---
+
+*Next up: Fine-tuning LLMs for your specific use case.*
+
