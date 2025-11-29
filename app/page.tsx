@@ -7,6 +7,11 @@ import { ScrollReveal } from "@/components/ScrollReveal";
 import { Code2, Brain, Terminal, GitPullRequest } from "lucide-react";
 import { GridPattern, BrutalistStar, BrutalistArrow, BrutalistGridDots } from "@/components/ui/Backgrounds";
 import { MagneticButton } from "@/components/ui/MagneticButton";
+import { HeroTitle } from "@/components/animations/HeroTitle";
+import { AnimatedText } from "@/components/animations/AnimatedText";
+import { CounterAnimation } from "@/components/animations/CounterAnimation";
+import { StaggerGrid } from "@/components/animations/StaggerGrid";
+import { AnimatedLine } from "@/components/animations/AnimatedLine";
 
 export default function Home() {
   const posts = getPosts().slice(0, 6);
@@ -56,19 +61,29 @@ export default function Home() {
             </div>
           </ScrollReveal>
           
-          <ScrollReveal delay={100}>
-            <h1 className="text-7xl md:text-9xl font-black uppercase tracking-tighter text-foreground leading-[0.9]">
-              NEO<span className="text-primary">.</span>
-              <br className="md:hidden" />
-              CORTEX
-            </h1>
-            <div className="h-2 w-32 bg-foreground mx-auto my-6" />
-            <p className="text-2xl md:text-3xl font-bold text-muted-foreground max-w-3xl mx-auto leading-tight">
-              DECODING THE <span className="bg-primary/20 px-2 text-foreground">SINGULARITY</span> WITH 
-              <br className="hidden md:block" /> 
-              RAW CODE AND <span className="bg-secondary/20 px-2 text-foreground">BOLD DESIGN</span>.
-            </p>
-          </ScrollReveal>
+          {/* Animated Hero Title */}
+          <HeroTitle className="relative" />
+
+          <div className="space-y-4">
+            <AnimatedText
+              text="DECODING THE SINGULARITY WITH"
+              as="p"
+              className="text-2xl md:text-3xl font-bold text-muted-foreground max-w-3xl mx-auto leading-tight"
+              splitBy="word"
+              animation="fadeUp"
+              delay={1400}
+              staggerDelay={80}
+            />
+            <AnimatedText
+              text="RAW CODE AND BOLD DESIGN."
+              as="p"
+              className="text-2xl md:text-3xl font-bold text-foreground max-w-3xl mx-auto leading-tight"
+              splitBy="word"
+              animation="fadeUp"
+              delay={1800}
+              staggerDelay={80}
+            />
+          </div>
           
           <ScrollReveal delay={200}>
             <div className="flex flex-col sm:flex-row gap-6 justify-center items-center pt-8">
@@ -108,6 +123,15 @@ export default function Home() {
                 <h2 className="text-5xl md:text-6xl font-black uppercase tracking-tighter">
                   FRESH_DROPS.LOG
                 </h2>
+                {/* Animated underline */}
+                <AnimatedLine 
+                  variant="underline" 
+                  width={200} 
+                  height={10} 
+                  strokeWidth={4}
+                  strokeColor="var(--primary)"
+                  delay={300}
+                />
               </div>
               <Link href="/blog" className="hidden md:flex items-center gap-2 group">
                 <span className="font-bold font-mono uppercase tracking-wider group-hover:underline decoration-4 decoration-primary underline-offset-4">
@@ -118,15 +142,21 @@ export default function Home() {
             </div>
           </ScrollReveal>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-            {posts.map((post, index) => (
-              <ScrollReveal key={post.slug} delay={index * 100}>
-                <div className="transform hover:-rotate-1 transition-transform duration-300">
-                  <PostCard post={post} />
-                </div>
-              </ScrollReveal>
+          {/* Staggered Post Cards Grid */}
+          <StaggerGrid
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10"
+            staggerDelay={100}
+            animation="fadeUp"
+            from="first"
+            columns={3}
+            useGrid={true}
+          >
+            {posts.map((post) => (
+              <div key={post.slug} className="transform hover:-rotate-1 transition-transform duration-300">
+                <PostCard post={post} />
+              </div>
             ))}
-          </div>
+          </StaggerGrid>
 
           <div className="md:hidden text-center">
             <Link href="/blog">
@@ -138,7 +168,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Stats Section */}
+      {/* Stats Section with Counter Animation */}
       <section className="py-20 px-4 sm:px-6 lg:px-8 border-y-4 border-border bg-foreground text-background relative overflow-hidden">
         <div className="absolute inset-0 opacity-10">
           <GridPattern />
@@ -155,7 +185,11 @@ export default function Home() {
               <ScrollReveal key={stat.label} delay={index * 100}>
                 <div className="space-y-4 group hover:-translate-y-2 transition-transform duration-300">
                   <div className="text-6xl md:text-7xl font-black text-primary font-mono group-hover:text-secondary transition-colors">
-                    {stat.value}
+                    <CounterAnimation 
+                      value={stat.value} 
+                      duration={2000} 
+                      delay={index * 200}
+                    />
                   </div>
                   <div className="inline-block bg-background text-foreground px-3 py-1 text-xs font-bold font-mono uppercase tracking-widest border-2 border-transparent group-hover:border-primary">
                     {stat.label}
@@ -183,9 +217,14 @@ export default function Home() {
                 📬 SUBSCRIBE.TO_STREAM
               </div>
               
-              <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tight leading-none">
-                DATA_INGESTION
-              </h2>
+              <AnimatedText
+                text="DATA_INGESTION"
+                as="h2"
+                className="text-4xl md:text-6xl font-black uppercase tracking-tight leading-none"
+                splitBy="letter"
+                animation="scaleUp"
+                staggerDelay={40}
+              />
               
               <p className="text-xl text-muted-foreground max-w-lg mx-auto font-medium">
                 Get the latest tech payloads delivered straight to your inbox.

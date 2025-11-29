@@ -1,6 +1,7 @@
 import { getPosts, getAllTags } from "@/lib/mdx";
 import { BlogFilter } from "@/components/BlogFilter";
 import { ScrollReveal } from "@/components/ScrollReveal";
+import { AnimatedText, AnimatedLine } from "@/components/animations";
 
 export const metadata = {
   title: "Blog | Neo-Brutalist Blog",
@@ -19,12 +20,32 @@ export default function BlogPage() {
             <div className="inline-block bg-primary text-primary-foreground px-4 py-1 text-sm font-bold uppercase rounded-full border-2 border-border shadow-neo">
               📚 All Articles
             </div>
-            <h1 className="text-4xl md:text-6xl font-black uppercase tracking-tighter">
-              The Blog
-            </h1>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Thoughts, tutorials, and rants about the future of technology.
-            </p>
+            <AnimatedText
+              text="The Blog"
+              as="h1"
+              className="text-4xl md:text-6xl font-black uppercase tracking-tighter"
+              splitBy="letter"
+              animation="fadeUp"
+              staggerDelay={50}
+            />
+            <AnimatedLine 
+              variant="underline" 
+              width={120} 
+              height={8} 
+              strokeWidth={4}
+              strokeColor="var(--primary)"
+              delay={500}
+              className="mx-auto"
+            />
+            <AnimatedText
+              text="Thoughts, tutorials, and rants about the future of technology."
+              as="p"
+              className="text-xl text-muted-foreground max-w-2xl mx-auto"
+              splitBy="word"
+              animation="fadeUp"
+              delay={300}
+              staggerDelay={40}
+            />
           </div>
         </ScrollReveal>
 
