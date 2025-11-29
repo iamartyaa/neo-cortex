@@ -151,7 +151,7 @@ export const mdxComponents = {
   // Enhanced images
   img: ({ src, alt, ...props }: any) => (
     <figure className="my-8">
-      <div className="relative overflow-hidden rounded-lg border-4 border-border shadow-neo">
+      <div className="relative overflow-hidden rounded-xl">
         <Image
           src={src}
           alt={alt || ""}
@@ -162,7 +162,7 @@ export const mdxComponents = {
         />
       </div>
       {alt && (
-        <figcaption className="mt-3 text-center text-sm text-muted-foreground font-mono">
+        <figcaption className="mt-3 text-center text-sm text-muted-foreground">
           📷 {alt}
         </figcaption>
       )}

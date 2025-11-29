@@ -309,9 +309,7 @@ body {
 
 /* Images */
 .prose-article img {
-  border-radius: var(--radius);
-  border: 2px solid var(--border);
-  box-shadow: var(--shadow-neo);
+  border-radius: 0.75rem;
   margin: 2rem auto;
 }
 
@@ -389,3 +387,43 @@ body {
 .prose-article pre .number { color: #c084fc; }
 .prose-article pre .operator { color: #94a3b8; }
 .prose-article pre .class-name { color: #38bdf8; }
+
+/* ========================================
+   CUSTOM SCROLLBAR STYLES
+   ======================================== */
+
+/* Thin scrollbar for TOC and other components */
+.scrollbar-thin {
+  scrollbar-width: thin;
+  scrollbar-color: var(--border) transparent;
+}
+
+.scrollbar-thin::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+.scrollbar-thin::-webkit-scrollbar-track {
+  background: transparent;
+  border-radius: 3px;
+}
+
+.scrollbar-thin::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 3px;
+  transition: background 0.2s ease;
+}
+
+.scrollbar-thin::-webkit-scrollbar-thumb:hover {
+  background: var(--muted-foreground);
+}
+
+/* Hide scrollbar but keep functionality */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}

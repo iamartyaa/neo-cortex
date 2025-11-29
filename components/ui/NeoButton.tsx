@@ -34,6 +34,7 @@ const NeoButton = React.forwardRef<HTMLButtonElement, NeoButtonProps>(
           sizes[size],
           className
         )}
+        suppressHydrationWarning
         {...props}
       />
     );

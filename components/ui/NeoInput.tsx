@@ -14,6 +14,7 @@ const NeoInput = React.forwardRef<HTMLInputElement, InputProps>(
           className
         )}
         ref={ref}
+        suppressHydrationWarning
         {...props}
       />
     );

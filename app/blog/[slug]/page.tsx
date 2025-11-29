@@ -22,6 +22,8 @@ export async function generateStaticParams() {
   }));
 }
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://neocortex.dev";
+
 export async function generateMetadata({
   params,
 }: {
@@ -34,9 +36,39 @@ export async function generateMetadata({
     return { title: "Post Not Found" };
   }
 
+  const postUrl = `${siteUrl}/blog/${slug}`;
+
   return {
-    title: `${post.meta.title} | NEO.CORTEX`,
+    title: post.meta.title,
     description: post.meta.excerpt,
+    keywords: post.meta.tags,
+    authors: [{ name: post.meta.author || "NEO.CORTEX" }],
+    openGraph: {
+      title: post.meta.title,
+      description: post.meta.excerpt,
+      type: "article",
+      url: postUrl,
+      publishedTime: post.meta.date,
+      authors: [post.meta.author || "NEO.CORTEX"],
+      tags: post.meta.tags,
+      images: [
+        {
+          url: "/og-image.png",
+          width: 1200,
+          height: 630,
+          alt: post.meta.title,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: post.meta.title,
+      description: post.meta.excerpt,
+      images: ["/og-image.png"],
+    },
+    alternates: {
+      canonical: postUrl,
+    },
   };
 }
 
@@ -135,8 +167,8 @@ export default async function PostPage({
                     <AuthorCard 
                       name="NEO.CORTEX"
                       bio="Decoding the singularity with raw code and bold design. Writing about AI, software engineering, and the future of technology."
-                      github="yourusername"
-                      twitter="yourusername"
+                      github="iamartyaa"
+                      x="evilseyee"
                     />
                   </div>
                 </ScrollReveal>

@@ -22,7 +22,7 @@ export function Video({ src, title, caption }: VideoProps) {
 
   return (
     <figure className="my-8">
-      <div className="relative overflow-hidden rounded-lg border-4 border-border shadow-neo bg-black aspect-video">
+      <div className="relative overflow-hidden rounded-xl bg-black aspect-video">
         {isYouTube ? (
           <iframe
             src={embedUrl}
@@ -43,7 +43,7 @@ export function Video({ src, title, caption }: VideoProps) {
         )}
       </div>
       {caption && (
-        <figcaption className="mt-3 text-center text-sm text-muted-foreground font-mono">
+        <figcaption className="mt-3 text-center text-sm text-muted-foreground">
           📹 {caption}
         </figcaption>
       )}

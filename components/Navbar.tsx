@@ -4,6 +4,7 @@ import { ThemeToggle } from "./ThemeToggle";
 import { NeoButton } from "./ui/NeoButton";
 import { CommandPalette } from "./CommandPalette";
 import { getPosts, getAllTags } from "@/lib/mdx";
+import { AnimatedLogo } from "./animations/AnimatedLogo";
 
 export function Navbar() {
   const posts = getPosts();
@@ -12,12 +13,8 @@ export function Navbar() {
   return (
     <header className="sticky top-0 z-50 w-full border-b-4 border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="max-w-7xl mx-auto flex h-16 items-center px-4 gap-4">
-        {/* Logo */}
-        <Link href="/" className="flex items-center space-x-2 group flex-shrink-0">
-          <span className="font-black text-xl sm:text-2xl tracking-tighter group-hover:text-primary transition-colors font-mono">
-            NEO<span className="text-primary">.</span>CORTEX
-          </span>
-        </Link>
+        {/* Animated Logo */}
+        <AnimatedLogo />
         
         {/* Navigation */}
         <nav className="hidden md:flex items-center space-x-1 flex-shrink-0">

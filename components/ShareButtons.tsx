@@ -1,8 +1,9 @@
 "use client";
 
-import { Twitter, Linkedin, Link2, Check } from "lucide-react";
+import { Linkedin, Link2, Check } from "lucide-react";
 import { useState } from "react";
 import { NeoButton } from "./ui/NeoButton";
+import { XIcon } from "./ui/XIcon";
 
 interface ShareButtonsProps {
   title: string;
@@ -26,9 +27,9 @@ export function ShareButtons({ title, url }: ShareButtonsProps) {
     }
   };
 
-  const shareOnTwitter = () => {
-    const twitterUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(title)}&url=${encodeURIComponent(shareUrl)}`;
-    window.open(twitterUrl, "_blank", "noopener,noreferrer");
+  const shareOnX = () => {
+    const xUrl = `https://x.com/intent/tweet?text=${encodeURIComponent(title)}&url=${encodeURIComponent(shareUrl)}`;
+    window.open(xUrl, "_blank", "noopener,noreferrer");
   };
 
   const shareOnLinkedIn = () => {
@@ -42,11 +43,11 @@ export function ShareButtons({ title, url }: ShareButtonsProps) {
       <NeoButton
         variant="outline"
         size="icon"
-        onClick={shareOnTwitter}
-        className="w-9 h-9 hover:bg-[#1DA1F2] hover:text-white hover:border-[#1DA1F2]"
-        aria-label="Share on Twitter"
+        onClick={shareOnX}
+        className="w-9 h-9 hover:bg-foreground hover:text-background hover:border-foreground"
+        aria-label="Share on X"
       >
-        <Twitter className="h-4 w-4" />
+        <XIcon className="h-4 w-4" />
       </NeoButton>
       <NeoButton
         variant="outline"

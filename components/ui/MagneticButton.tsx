@@ -46,6 +46,7 @@ export function MagneticButton({
       style={{
         transform: `translate(${position.x}px, ${position.y}px)`,
       }}
+      suppressHydrationWarning
       {...props}
     >
       {children}

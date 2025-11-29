@@ -17,7 +17,7 @@ export function ImageWithCaption({
 }: ImageWithCaptionProps) {
   return (
     <figure className="my-8">
-      <div className="overflow-hidden rounded-lg border-2 border-border shadow-neo-lg">
+      <div className="overflow-hidden rounded-xl">
         <Image
           src={src}
           alt={alt}
