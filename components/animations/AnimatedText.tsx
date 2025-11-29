@@ -78,15 +78,12 @@ export function AnimatedText({
       },
     };
 
-    const animationParams = {
+    const animationParams: Parameters<typeof animate>[1] = {
       ...animations[animation],
       duration: 600,
       delay: stagger(staggerDelay, { start: delay }),
+      ...(onComplete && { onComplete }),
     };
-    
-    if (onComplete) {
-      animationParams.onComplete = onComplete;
-    }
     
     animate(chars, animationParams);
   }, [isVisible, delay, staggerDelay, animation, onComplete]);
