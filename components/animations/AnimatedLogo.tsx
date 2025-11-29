@@ -32,11 +32,13 @@ export function AnimatedLogo({ className = "" }: AnimatedLogoProps) {
     });
 
     // Pulse the dot
-    animate(dot, {
-      scale: [1, 1.5, 1],
-      duration: 400,
-      ease: "outElastic(1, .6)",
-    });
+    if (dot) {
+      animate(dot, {
+        scale: [1, 1.5, 1],
+        duration: 400,
+        ease: "outElastic(1, .6)",
+      });
+    }
   }, []);
 
   return (

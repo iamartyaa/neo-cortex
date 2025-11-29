@@ -78,12 +78,18 @@ export function AnimatedText({
       },
     };
 
-    animate(chars, {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const animationParams: any = {
       ...animations[animation],
       duration: 600,
       delay: stagger(staggerDelay, { start: delay }),
-      onComplete,
-    });
+    };
+    
+    if (onComplete) {
+      animationParams.onComplete = onComplete;
+    }
+    
+    animate(chars, animationParams);
   }, [isVisible, delay, staggerDelay, animation, onComplete]);
 
   const splitText = () => {
