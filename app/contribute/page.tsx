@@ -436,8 +436,8 @@ ${content}
           </div>
         </ScrollReveal>
 
-        {/* Main Grid */}
-        <div className="grid lg:grid-cols-2 gap-8">
+        {/* Main Grid - Hidden on mobile, only show How to Contribute section */}
+        <div className="hidden lg:grid lg:grid-cols-2 gap-8">
           {/* Editor */}
           <ScrollReveal delay={100}>
             <NeoCard className="p-6 space-y-6">
