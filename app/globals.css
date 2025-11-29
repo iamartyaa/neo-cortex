@@ -131,6 +131,34 @@ body {
   transform: translateY(0);
 }
 
+/* Ensure content is visible for users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .fade-in-up {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* CSS-only fallback: auto-reveal after animation delay */
+/* This ensures content is visible even if JS fails */
+@supports (animation-timeline: auto) {
+  .fade-in-up {
+    animation: fallback-reveal 0.001s 2.5s forwards;
+  }
+  
+  .fade-in-up.visible {
+    animation: none;
+  }
+  
+  @keyframes fallback-reveal {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
 /* Stagger children animations */
 .stagger-children > * {
   opacity: 0;

@@ -66,6 +66,7 @@ const CodeBlockPreview = ({ children, className }: { children: React.ReactNode; 
         <button
           onClick={handleCopy}
           className="flex items-center gap-1 text-xs text-gray-400 hover:text-white transition-colors px-2 py-1 rounded hover:bg-[#404040]"
+          suppressHydrationWarning
         >
           {copied ? <Check className="w-3 h-3" /> : <Copy className="w-3 h-3" />}
           {copied ? "Copied!" : "Copy"}
@@ -558,6 +559,7 @@ console.log('Hello, NEO.CORTEX!');
 Check out [this link](https://example.com) for more info.`}
                     value={content}
                     onChange={(e) => setContent(e.target.value)}
+                    suppressHydrationWarning
                   />
                 </div>
               </div>
@@ -656,6 +658,7 @@ Check out [this link](https://example.com) for more info.`}
             <button 
               onClick={() => setShowInstructions(!showInstructions)}
               className="w-full flex items-center justify-between text-left"
+              suppressHydrationWarning
             >
               <h3 className="font-bold text-xl flex items-center gap-3">
                 <GitPullRequest className="h-6 w-6 text-primary" />
@@ -680,7 +683,7 @@ Check out [this link](https://example.com) for more info.`}
                   <div className="flex-shrink-0 w-10 h-10 rounded-full bg-primary text-primary-foreground flex items-center justify-center font-bold border-2 border-border shadow-neo">
                     1
                   </div>
-                  <div className="flex-1">
+                  <div className="flex-1 min-w-0">
                     <h4 className="font-bold flex items-center gap-2 mb-2">
                       <GitFork className="h-4 w-4 text-primary" />
                       Fork the Repository
@@ -705,7 +708,7 @@ Check out [this link](https://example.com) for more info.`}
                   <div className="flex-shrink-0 w-10 h-10 rounded-full bg-primary text-primary-foreground flex items-center justify-center font-bold border-2 border-border shadow-neo">
                     2
                   </div>
-                  <div className="flex-1">
+                  <div className="flex-1 min-w-0">
                     <h4 className="font-bold flex items-center gap-2 mb-2">
                       <GitBranch className="h-4 w-4 text-primary" />
                       Create a New Branch
@@ -726,7 +729,7 @@ git checkout -b post/your-article-title`}</code>
                   <div className="flex-shrink-0 w-10 h-10 rounded-full bg-primary text-primary-foreground flex items-center justify-center font-bold border-2 border-border shadow-neo">
                     3
                   </div>
-                  <div className="flex-1">
+                  <div className="flex-1 min-w-0">
                     <h4 className="font-bold flex items-center gap-2 mb-2">
                       <FileText className="h-4 w-4 text-primary" />
                       Add Your MDX File
@@ -734,7 +737,7 @@ git checkout -b post/your-article-title`}</code>
                     <p className="text-muted-foreground text-sm mb-3">
                       Download or copy your MDX file from above and save it to:
                     </p>
-                    <pre className="bg-muted p-3 rounded-lg text-sm font-mono border-2 border-border">
+                    <pre className="bg-muted p-3 rounded-lg text-sm font-mono border-2 border-border overflow-x-auto">
                       <code>content/posts/{generateSlug(title) || "your-post-slug"}.mdx</code>
                     </pre>
                   </div>
@@ -745,7 +748,7 @@ git checkout -b post/your-article-title`}</code>
                   <div className="flex-shrink-0 w-10 h-10 rounded-full bg-primary text-primary-foreground flex items-center justify-center font-bold border-2 border-border shadow-neo">
                     4
                   </div>
-                  <div className="flex-1">
+                  <div className="flex-1 min-w-0">
                     <h4 className="font-bold flex items-center gap-2 mb-2">
                       <GitPullRequest className="h-4 w-4 text-primary" />
                       Submit a Pull Request
@@ -766,7 +769,7 @@ git push origin post/your-article-title`}</code>
                   <div className="flex-shrink-0 w-10 h-10 rounded-full bg-secondary text-secondary-foreground flex items-center justify-center font-bold border-2 border-border shadow-neo">
                     <CheckCircle2 className="h-5 w-5" />
                   </div>
-                  <div className="flex-1">
+                  <div className="flex-1 min-w-0">
                     <h4 className="font-bold flex items-center gap-2 mb-2">
                       <Sparkles className="h-4 w-4 text-secondary" />
                       Get Published!
@@ -851,8 +854,8 @@ git push origin post/your-article-title`}</code>
               {/* Lists */}
               <div className="space-y-4">
                 <h4 className="font-bold text-sm uppercase tracking-wider text-muted-foreground">Lists</h4>
-                <div className="p-3 bg-muted rounded-lg border-2 border-border text-sm">
-                  <pre className="font-mono text-xs">{`- Unordered item 1
+                <div className="p-3 bg-muted rounded-lg border-2 border-border text-sm overflow-x-auto">
+                  <pre className="font-mono text-xs whitespace-pre">{`- Unordered item 1
 - Unordered item 2
   - Nested item
 
@@ -877,8 +880,8 @@ git push origin post/your-article-title`}</code>
               {/* Code Blocks */}
               <div className="space-y-4">
                 <h4 className="font-bold text-sm uppercase tracking-wider text-muted-foreground">Code Blocks</h4>
-                <div className="p-3 bg-muted rounded-lg border-2 border-border text-sm">
-                  <pre className="font-mono text-xs">{`\`\`\`javascript
+                <div className="p-3 bg-muted rounded-lg border-2 border-border text-sm overflow-x-auto">
+                  <pre className="font-mono text-xs whitespace-pre">{`\`\`\`javascript
 const greeting = "Hello!";
 console.log(greeting);
 \`\`\``}</pre>
@@ -891,8 +894,8 @@ console.log(greeting);
               {/* Quotes */}
               <div className="space-y-4">
                 <h4 className="font-bold text-sm uppercase tracking-wider text-muted-foreground">Blockquotes</h4>
-                <div className="p-3 bg-muted rounded-lg border-2 border-border text-sm">
-                  <pre className="font-mono text-xs">{`> This is a blockquote.
+                <div className="p-3 bg-muted rounded-lg border-2 border-border text-sm overflow-x-auto">
+                  <pre className="font-mono text-xs whitespace-pre">{`> This is a blockquote.
 > It can span multiple lines.`}</pre>
                 </div>
               </div>
@@ -900,8 +903,8 @@ console.log(greeting);
               {/* Tables */}
               <div className="space-y-4">
                 <h4 className="font-bold text-sm uppercase tracking-wider text-muted-foreground">Tables</h4>
-                <div className="p-3 bg-muted rounded-lg border-2 border-border text-sm">
-                  <pre className="font-mono text-xs">{`| Header 1 | Header 2 |
+                <div className="p-3 bg-muted rounded-lg border-2 border-border text-sm overflow-x-auto">
+                  <pre className="font-mono text-xs whitespace-pre">{`| Header 1 | Header 2 |
 |----------|----------|
 | Cell 1   | Cell 2   |
 | Cell 3   | Cell 4   |`}</pre>
@@ -912,14 +915,14 @@ console.log(greeting);
               <div className="space-y-4">
                 <h4 className="font-bold text-sm uppercase tracking-wider text-muted-foreground">Special Components</h4>
                 <div className="space-y-3 text-sm">
-                  <div className="p-3 bg-muted rounded-lg border-2 border-border">
-                    <pre className="font-mono text-xs">{`<Callout type="info">
+                  <div className="p-3 bg-muted rounded-lg border-2 border-border overflow-x-auto">
+                    <pre className="font-mono text-xs whitespace-pre">{`<Callout type="info">
   Important information here!
 </Callout>`}</pre>
                     <p className="text-xs text-muted-foreground mt-2">Types: info, warning, tip, danger</p>
                   </div>
-                  <div className="p-3 bg-muted rounded-lg border-2 border-border">
-                    <pre className="font-mono text-xs">{`<Video 
+                  <div className="p-3 bg-muted rounded-lg border-2 border-border overflow-x-auto">
+                    <pre className="font-mono text-xs whitespace-pre">{`<Video 
   src="https://youtube.com/..." 
   caption="Video title" 
 />`}</pre>
