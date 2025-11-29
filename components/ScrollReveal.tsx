@@ -12,6 +12,20 @@ export function ScrollReveal({ children, className = "", delay = 0 }: ScrollReve
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    const element = ref.current;
+    if (!element) return;
+
+    // Check if already visible on mount
+    const rect = element.getBoundingClientRect();
+    const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
+    
+    if (isVisible) {
+      setTimeout(() => {
+        element.classList.add("visible");
+      }, delay);
+      return;
+    }
+
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -24,14 +38,12 @@ export function ScrollReveal({ children, className = "", delay = 0 }: ScrollReve
         });
       },
       {
-        threshold: 0.1,
-        rootMargin: "0px 0px -50px 0px",
+        threshold: 0.05,
+        rootMargin: "50px 0px 50px 0px",
       }
     );
 
-    if (ref.current) {
-      observer.observe(ref.current);
-    }
+    observer.observe(element);
 
     return () => observer.disconnect();
   }, [delay]);

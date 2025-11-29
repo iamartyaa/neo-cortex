@@ -3,9 +3,27 @@ import { BlogFilter } from "@/components/BlogFilter";
 import { ScrollReveal } from "@/components/ScrollReveal";
 import { AnimatedText, AnimatedLine } from "@/components/animations";
 
-export const metadata = {
-  title: "Blog | Neo-Brutalist Blog",
-  description: "Browse all our latest posts on tech, AI, and design.",
+import { Metadata } from "next";
+
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://neocortex.dev";
+
+export const metadata: Metadata = {
+  title: "Blog",
+  description: "Explore articles on AI, machine learning, software engineering, and the future of technology. In-depth tutorials, insights, and thought pieces.",
+  openGraph: {
+    title: "NEO.CORTEX Blog - AI & Tech Articles",
+    description: "Explore articles on AI, machine learning, software engineering, and the future of technology.",
+    url: `${siteUrl}/blog`,
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "NEO.CORTEX Blog - AI & Tech Articles",
+    description: "Explore articles on AI, machine learning, software engineering, and the future of technology.",
+  },
+  alternates: {
+    canonical: `${siteUrl}/blog`,
+  },
 };
 
 export default function BlogPage() {

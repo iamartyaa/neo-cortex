@@ -9,7 +9,6 @@ import { GridPattern, BrutalistStar, BrutalistArrow, BrutalistGridDots } from "@
 import { MagneticButton } from "@/components/ui/MagneticButton";
 import { HeroTitle } from "@/components/animations/HeroTitle";
 import { AnimatedText } from "@/components/animations/AnimatedText";
-import { CounterAnimation } from "@/components/animations/CounterAnimation";
 import { StaggerGrid } from "@/components/animations/StaggerGrid";
 import { AnimatedLine } from "@/components/animations/AnimatedLine";
 
@@ -65,24 +64,16 @@ export default function Home() {
           <HeroTitle className="relative" />
 
           <div className="space-y-4">
-            <AnimatedText
-              text="DECODING THE SINGULARITY WITH"
-              as="p"
-              className="text-2xl md:text-3xl font-bold text-muted-foreground max-w-3xl mx-auto leading-tight"
-              splitBy="word"
-              animation="fadeUp"
-              delay={1400}
-              staggerDelay={80}
-            />
-            <AnimatedText
-              text="RAW CODE AND BOLD DESIGN."
-              as="p"
-              className="text-2xl md:text-3xl font-bold text-foreground max-w-3xl mx-auto leading-tight"
-              splitBy="word"
-              animation="fadeUp"
-              delay={1800}
-              staggerDelay={80}
-            />
+            <ScrollReveal delay={1400}>
+              <p className="text-2xl md:text-3xl font-bold text-muted-foreground max-w-3xl mx-auto leading-tight">
+                DECODING THE <span className="text-primary bg-primary/10 px-2">SINGULARITY</span> WITH
+              </p>
+            </ScrollReveal>
+            <ScrollReveal delay={1800}>
+              <p className="text-2xl md:text-3xl font-bold text-foreground max-w-3xl mx-auto leading-tight">
+                <span className="text-secondary bg-secondary/10 px-2">RAW CODE</span> AND <span className="text-primary bg-primary/10 px-2">BOLD DESIGN</span>.
+              </p>
+            </ScrollReveal>
           </div>
           
           <ScrollReveal delay={200}>
@@ -168,36 +159,36 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Stats Section with Counter Animation */}
+      {/* AI Quote Section */}
       <section className="py-20 px-4 sm:px-6 lg:px-8 border-y-4 border-border bg-foreground text-background relative overflow-hidden">
         <div className="absolute inset-0 opacity-10">
           <GridPattern />
         </div>
         
-        <div className="max-w-7xl mx-auto relative z-10">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-12 text-center">
-            {[
-              { value: "50+", label: "MODULES" },
-              { value: "10K+", label: "USERS" },
-              { value: "100%", label: "OPEN_SOURCE" },
-              { value: "∞", label: "UPTIME" },
-            ].map((stat, index) => (
-              <ScrollReveal key={stat.label} delay={index * 100}>
-                <div className="space-y-4 group hover:-translate-y-2 transition-transform duration-300">
-                  <div className="text-6xl md:text-7xl font-black text-primary font-mono group-hover:text-secondary transition-colors">
-                    <CounterAnimation 
-                      value={stat.value} 
-                      duration={2000} 
-                      delay={index * 200}
-                    />
-                  </div>
-                  <div className="inline-block bg-background text-foreground px-3 py-1 text-xs font-bold font-mono uppercase tracking-widest border-2 border-transparent group-hover:border-primary">
-                    {stat.label}
-                  </div>
+        <div className="max-w-5xl mx-auto relative z-10">
+          <ScrollReveal>
+            <div className="text-center space-y-8">
+              {/* Quote Mark */}
+              <div className="text-8xl md:text-9xl font-black text-primary/30 leading-none select-none">
+                "
+              </div>
+              
+              {/* Quote Text */}
+              <blockquote className="text-2xl md:text-4xl font-bold leading-relaxed tracking-tight -mt-16">
+                The development of full artificial intelligence could spell the end of the human race... or it could be the best thing ever to happen to humanity. We just don't know.
+              </blockquote>
+              
+              {/* Author */}
+              <div className="flex flex-col items-center gap-3 pt-4">
+                <div className="h-1 w-16 bg-primary" />
+                <div className="flex items-center gap-3">
+                  <span className="text-lg md:text-xl font-black text-primary">Stephen Hawking</span>
+                  <span className="text-muted-foreground">•</span>
+                  <span className="text-sm font-mono text-muted-foreground">Theoretical Physicist</span>
                 </div>
-              </ScrollReveal>
-            ))}
-          </div>
+              </div>
+            </div>
+          </ScrollReveal>
         </div>
       </section>
 
@@ -239,22 +230,6 @@ export default function Home() {
         </div>
       </section>
       
-      {/* Footer */}
-      <footer className="py-12 text-center border-t-4 border-border bg-muted/50 font-mono text-sm">
-        <div className="max-w-7xl mx-auto px-4 space-y-6">
-          <div className="flex justify-center items-center gap-2 text-2xl font-black uppercase tracking-tighter opacity-50">
-            NEO<span className="text-primary">.</span>CORTEX
-          </div>
-          <p className="text-muted-foreground">
-            © {new Date().getFullYear()} SYSTEM_STATUS: ONLINE
-          </p>
-          <div className="flex justify-center gap-8 uppercase tracking-wider font-bold">
-            <Link href="/blog" className="hover:text-primary hover:underline decoration-4 underline-offset-4 transition-all">/blog</Link>
-            <Link href="/contribute" className="hover:text-primary hover:underline decoration-4 underline-offset-4 transition-all">/contribute</Link>
-            <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="hover:text-primary hover:underline decoration-4 underline-offset-4 transition-all">/github</a>
-          </div>
-        </div>
-      </footer>
     </main>
   );
 }

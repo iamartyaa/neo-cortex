@@ -69,40 +69,42 @@ export function TableOfContents({ content }: TableOfContentsProps) {
   if (headings.length === 0) return null;
 
   return (
-    <nav className="rounded-lg border-2 border-border bg-card p-4 shadow-neo">
-      <div className="flex items-center gap-2 mb-3 pb-2 border-b-2 border-border">
+    <nav className="rounded-lg border-2 border-border bg-card shadow-neo flex flex-col max-h-[calc(100vh-8rem)]">
+      <div className="flex items-center gap-2 p-4 pb-3 border-b-2 border-border shrink-0">
         <List className="h-4 w-4 text-primary" />
         <span className="font-bold text-sm uppercase tracking-wide">
           On This Page
         </span>
       </div>
-      <ul className="space-y-1 text-sm">
-        {headings.map((heading, index) => (
-          <li
-            key={`${heading.id}-${index}`}
-            style={{ paddingLeft: `${(heading.level - 1) * 12}px` }}
-          >
-            <a
-              href={`#${heading.id}`}
-              className={cn(
-                "block py-1 px-2 rounded transition-all hover:bg-muted",
-                activeId === heading.id
-                  ? "text-primary font-semibold bg-primary/10 border-l-2 border-primary"
-                  : "text-muted-foreground hover:text-foreground"
-              )}
-              onClick={(e) => {
-                e.preventDefault();
-                const element = document.getElementById(heading.id);
-                if (element) {
-                  element.scrollIntoView({ behavior: "smooth" });
-                }
-              }}
+      <div className="overflow-y-auto overscroll-contain p-4 pt-3 scrollbar-thin scrollbar-thumb-border scrollbar-track-transparent hover:scrollbar-thumb-muted-foreground/50">
+        <ul className="space-y-1 text-sm">
+          {headings.map((heading, index) => (
+            <li
+              key={`${heading.id}-${index}`}
+              style={{ paddingLeft: `${(heading.level - 1) * 12}px` }}
             >
-              {heading.text}
-            </a>
-          </li>
-        ))}
-      </ul>
+              <a
+                href={`#${heading.id}`}
+                className={cn(
+                  "block py-1 px-2 rounded transition-all hover:bg-muted",
+                  activeId === heading.id
+                    ? "text-primary font-semibold bg-primary/10 border-l-2 border-primary"
+                    : "text-muted-foreground hover:text-foreground"
+                )}
+                onClick={(e) => {
+                  e.preventDefault();
+                  const element = document.getElementById(heading.id);
+                  if (element) {
+                    element.scrollIntoView({ behavior: "smooth" });
+                  }
+                }}
+              >
+                {heading.text}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
     </nav>
   );
 }

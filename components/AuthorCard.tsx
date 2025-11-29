@@ -1,11 +1,12 @@
 import { NeoCard } from "./ui/NeoCard";
-import { Github, Twitter, Globe } from "lucide-react";
+import { Github, Globe } from "lucide-react";
+import { XIcon } from "./ui/XIcon";
 
 interface AuthorCardProps {
   name?: string;
   bio?: string;
   avatar?: string;
-  twitter?: string;
+  x?: string;
   github?: string;
   website?: string;
 }
@@ -14,7 +15,7 @@ export function AuthorCard({
   name = "NEO.CORTEX",
   bio = "Decoding the singularity with raw code and bold design. Writing about AI, software engineering, and the future of technology.",
   avatar,
-  twitter,
+  x,
   github,
   website,
 }: AuthorCardProps) {
@@ -55,15 +56,15 @@ export function AuthorCard({
 
           {/* Social Links */}
           <div className="flex items-center justify-center md:justify-start gap-3">
-            {twitter && (
+            {x && (
               <a
-                href={`https://twitter.com/${twitter}`}
+                href={`https://x.com/${x}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-2 rounded-lg border-2 border-border bg-card shadow-neo hover:bg-[#1DA1F2] hover:text-white hover:border-[#1DA1F2] transition-all hover:-translate-y-1"
-                aria-label="Twitter"
+                className="p-2 rounded-lg border-2 border-border bg-card shadow-neo hover:bg-foreground hover:text-background hover:border-foreground transition-all hover:-translate-y-1"
+                aria-label="X (formerly Twitter)"
               >
-                <Twitter className="h-4 w-4" />
+                <XIcon className="h-4 w-4" />
               </a>
             )}
             {github && (
