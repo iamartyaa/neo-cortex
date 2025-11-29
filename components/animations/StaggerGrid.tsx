@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState, Children, cloneElement, isValidElement } from "react";
+import { useEffect, useRef, useState, Children, isValidElement } from "react";
 import { animate, stagger } from "animejs";
 
 interface StaggerGridProps {

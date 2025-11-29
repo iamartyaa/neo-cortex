@@ -170,12 +170,12 @@ export default function Home() {
             <div className="text-center space-y-8">
               {/* Quote Mark */}
               <div className="text-8xl md:text-9xl font-black text-primary/30 leading-none select-none">
-                "
+                &ldquo;
               </div>
               
               {/* Quote Text */}
               <blockquote className="text-2xl md:text-4xl font-bold leading-relaxed tracking-tight -mt-16">
-                The development of full artificial intelligence could spell the end of the human race... or it could be the best thing ever to happen to humanity. We just don't know.
+                The development of full artificial intelligence could spell the end of the human race... or it could be the best thing ever to happen to humanity. We just don&apos;t know.
               </blockquote>
               
               {/* Author */}

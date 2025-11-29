@@ -25,8 +25,8 @@ import {
   AlertTriangle,
   Lightbulb,
   AlertCircle,
-  Play,
-  Circle
+  Circle,
+  Monitor
 } from "lucide-react";
 import { MDXRemote } from "next-mdx-remote";
 import { serialize } from "next-mdx-remote/serialize";
@@ -429,14 +429,43 @@ ${content}
             <h1 className="text-4xl md:text-6xl font-black uppercase tracking-tight">
               CONTRIBUTE<span className="text-primary">_</span>YOUR<span className="text-primary">_</span>POST
             </h1>
-            <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
+            {/* Desktop description */}
+            <p className="hidden lg:block text-muted-foreground max-w-2xl mx-auto text-lg">
               Share your knowledge with the community! Write your article below, preview it in real-time, 
               then submit it via a GitHub Pull Request.
+            </p>
+            {/* Mobile description */}
+            <p className="block lg:hidden text-muted-foreground max-w-2xl mx-auto text-lg">
+              Share your knowledge with the community! Follow the contribution guide below 
+              to submit your article via GitHub Pull Request.
             </p>
           </div>
         </ScrollReveal>
 
-        {/* Main Grid - Hidden on mobile, only show How to Contribute section */}
+        {/* Mobile Notice - Editor only available on desktop */}
+        <div className="block lg:hidden">
+          <ScrollReveal delay={100}>
+            <NeoCard className="p-6 border-primary bg-primary/5">
+              <div className="flex items-start gap-4">
+                <div className="flex-shrink-0 p-2 rounded-lg bg-primary text-primary-foreground">
+                  <Monitor className="h-5 w-5" />
+                </div>
+                <div className="space-y-2">
+                  <h3 className="font-bold text-lg">Interactive Editor Available on Desktop</h3>
+                  <p className="text-muted-foreground text-sm">
+                    Our live MDX editor with real-time preview works best on larger screens. 
+                    Visit this page on a desktop or tablet to write and preview your article directly in the browser.
+                  </p>
+                  <p className="text-muted-foreground text-sm">
+                    On mobile, you can still review the contribution guidelines and MDX formatting guide below!
+                  </p>
+                </div>
+              </div>
+            </NeoCard>
+          </ScrollReveal>
+        </div>
+
+        {/* Main Grid - Editor and Preview (desktop only) */}
         <div className="hidden lg:grid lg:grid-cols-2 gap-8">
           {/* Editor */}
           <ScrollReveal delay={100}>

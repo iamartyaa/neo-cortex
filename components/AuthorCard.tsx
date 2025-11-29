@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { NeoCard } from "./ui/NeoCard";
 import { Github, Globe } from "lucide-react";
 import { XIcon } from "./ui/XIcon";
@@ -25,11 +26,15 @@ export function AuthorCard({
         {/* Avatar */}
         <div className="flex-shrink-0">
           {avatar ? (
-            <img
-              src={avatar}
-              alt={name}
-              className="h-24 w-24 rounded-full border-4 border-border shadow-neo object-cover"
-            />
+            <div className="relative h-24 w-24">
+              <Image
+                src={avatar}
+                alt={name}
+                fill
+                className="rounded-full border-4 border-border shadow-neo object-cover"
+                unoptimized
+              />
+            </div>
           ) : (
             <div className="h-24 w-24 rounded-full bg-gradient-to-br from-primary to-secondary border-4 border-border shadow-neo flex items-center justify-center">
               <span className="text-4xl font-black text-primary-foreground">

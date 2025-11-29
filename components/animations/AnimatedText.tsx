@@ -78,8 +78,7 @@ export function AnimatedText({
       },
     };
 
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const animationParams: any = {
+    const animationParams = {
       ...animations[animation],
       duration: 600,
       delay: stagger(staggerDelay, { start: delay }),

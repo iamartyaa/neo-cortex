@@ -35,7 +35,7 @@ export const staggerPresets = {
 } as const;
 
 // Grid stagger for card layouts
-export function createGridStagger(cols: number, rows: number, baseDelay: number = 50) {
+export function createGridStagger(cols: number, rows: number) {
   return {
     grid: [cols, rows] as [number, number],
     from: 'center' as const,
